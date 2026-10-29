@@ -42,9 +42,11 @@ sudo DOMAIN=dash.example.com LETSENCRYPT_EMAIL=you@example.com \
      META_ACCESS_TOKEN='EAAB…' ./deploy.sh
 ```
 
-It installs Node 22, PostgreSQL and nginx, creates the database and `.env` (with generated secrets), runs migrations, builds, creates the first admin, installs a `blendfold` systemd service, configures nginx and HTTPS (Let's Encrypt), and health-checks the app. Anything you don't pass is prompted for.
+It installs Node 22, pm2, PostgreSQL and nginx (skipping any already installed), creates the database and `.env` (with generated secrets), runs migrations, builds, creates the first admin, starts the app under **pm2** as the user who ran `sudo` (so it appears in your `pm2 list`, enabled on boot), configures nginx and HTTPS (Let's Encrypt), and health-checks the app. Anything you don't pass is prompted for.
 
-Redeploy after changes: `git pull && sudo ./deploy.sh`. Logs: `journalctl -u blendfold -f`.
+The app listens on `127.0.0.1` only, on the first free port from 3000 (saved as `APP_PORT` in `.env` and reused on redeploys); force one with `sudo PORT=3010 ./deploy.sh`. pm2 settings live in `ecosystem.config.cjs`.
+
+Redeploy after changes: `git pull && sudo ./deploy.sh`. Logs: `pm2 logs blendfold`. Restart: `pm2 restart blendfold`.
 
 ## Local development
 
