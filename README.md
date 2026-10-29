@@ -48,6 +48,16 @@ The app listens on `127.0.0.1` only, on the first free port from 3000 (saved as 
 
 Redeploy after changes: `git pull && sudo ./deploy.sh`. Logs: `pm2 logs blendfold`. Restart: `pm2 restart blendfold`.
 
+## Bulk-importing clients
+
+`scripts/clients.json` lists agencies, clients and their ad account IDs (currently Perstrive's accounts and Ben – ADU California). Load or update them on the server with:
+
+```bash
+npm run import:clients            # or: node --env-file=.env scripts/import-clients.mjs other.json
+```
+
+It is safe to re-run: names are matched, ad accounts are moved to the client listed, nothing is deleted. Everything imported is visible to admins immediately; give an agency owner or client user access from **Admin → Users**.
+
 ## Local development
 
 ```bash

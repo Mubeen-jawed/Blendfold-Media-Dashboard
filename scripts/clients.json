@@ -1,0 +1,41 @@
+{
+  "agencies": [
+    {
+      "name": "Perstrive",
+      "clients": [
+        { "name": "Perstrive (agency account)", "accounts": [{ "id": "act_1810799009306944", "name": "Perstrive - Agency" }] },
+        { "name": "Allied Coatings", "accounts": [{ "id": "act_804068654882346", "name": "Allied Coatings" }] },
+        { "name": "CARDS Holding", "accounts": [{ "id": "act_2524017827809252", "name": "CARDS Holding" }] },
+        { "name": "Diamond Flooring", "accounts": [{ "id": "act_1044965823231886", "name": "Diamond Flooring" }] },
+        { "name": "Dynamic Floor Coatings", "accounts": [{ "id": "act_208978398562131", "name": "Dynamic Floor Coatings" }] },
+        { "name": "Factory 1 High Performance Coatings", "accounts": [{ "id": "act_999002925069935", "name": "Factory 1 High Performance Coatings" }] },
+        { "name": "First Class Epoxy", "accounts": [{ "id": "act_929084258852324", "name": "First Class Epoxy" }] },
+        { "name": "Floor Warriors", "accounts": [{ "id": "act_1262703537997368", "name": "Floor Warriors" }] },
+        { "name": "FloorMods", "accounts": [{ "id": "act_1284088462475922", "name": "FloorMods" }] },
+        { "name": "Garage Force of Columbus NE", "accounts": [{ "id": "act_1150465216113023", "name": "Garage Force of Columbus NE" }] },
+        { "name": "Garage Kings of Columbus GA", "accounts": [{ "id": "act_786961499808192", "name": "Garage Kings of Columbus GA" }] },
+        { "name": "Garage Kings NJ", "accounts": [{ "id": "act_1132382147785831", "name": "Garage Kings - NJ" }] },
+        { "name": "Granite Garage Floors Phoenix East Valley", "accounts": [{ "id": "act_627891882659581", "name": "Granite Garage Floors Phoenix East Valley" }] },
+        { "name": "Jet Flooring", "accounts": [{ "id": "act_1356553514895005", "name": "Jet Flooring" }] },
+        { "name": "Lifetime Green Coatings LA", "accounts": [{ "id": "act_1360110727983218", "name": "Lifetime Green Coatings - LA" }] },
+        { "name": "Lone Star Surface Pros", "accounts": [{ "id": "act_1112609366417817", "name": "Lone Star Surface Pros" }] },
+        { "name": "LYNX Concrete Coatings", "accounts": [{ "id": "act_804815981386462", "name": "LYNX Concrete Coatings" }] },
+        { "name": "MSC Epoxy Floors", "accounts": [{ "id": "act_710523194489087", "name": "MSC Epoxy Floors" }] },
+        {
+          "name": "Patriot Coatings",
+          "accounts": [
+            { "id": "act_1096916408318340", "name": "Patriot Coatings · Denver" },
+            { "id": "act_1109077460242222", "name": "Patriot Coatings · Huntsville" }
+          ]
+        },
+        { "name": "Platinum Property Service", "accounts": [{ "id": "act_1215362213189691", "name": "Platinum Property Service" }] },
+        { "name": "Project X Concrete Coatings", "accounts": [{ "id": "act_949814429413015", "name": "Project X Concrete Coatings" }] },
+        { "name": "Select Coatings", "accounts": [{ "id": "act_601172448876583", "name": "Select Coatings" }] },
+        { "name": "Select Painting", "accounts": [{ "id": "act_718315683520657", "name": "Select Painting" }] }
+      ]
+    }
+  ],
+  "clients": [
+    { "name": "Ben – ADU California", "accounts": [{ "id": "act_598233003217290", "name": "Ben ADU California" }] }
+  ]
+}

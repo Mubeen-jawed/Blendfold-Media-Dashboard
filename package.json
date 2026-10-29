@@ -11,6 +11,7 @@
     "db:dev": "prisma migrate dev",
     "create-admin": "node --env-file-if-exists=.env scripts/create-admin.mjs",
     "seed:demo": "node --env-file-if-exists=.env scripts/seed-demo.mjs",
+    "import:clients": "node --env-file-if-exists=.env scripts/import-clients.mjs",
     "postinstall": "prisma generate"
   },
   "dependencies": {
