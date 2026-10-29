@@ -197,6 +197,8 @@ SITE="/etc/nginx/sites-available/$APP_NAME"
 # Keep certbot's HTTPS block if it already exists; only the upstream port needs refreshing.
 if [[ -f "$SITE" ]] && grep -q "managed by Certbot" "$SITE"; then
   sed -i -E "s#proxy_pass http://127\.0\.0\.1:[0-9]+;#proxy_pass http://127.0.0.1:$PORT;#g" "$SITE"
+  # Older configs lack X-Forwarded-Host, which the app needs to build redirects on the public domain.
+  grep -q "X-Forwarded-Host" "$SITE" || sed -i -E 's#^([[:space:]]*)proxy_set_header Host \$host;#&\n\1proxy_set_header X-Forwarded-Host $host;#' "$SITE"
   ok "Updated upstream port in existing HTTPS config"
 else
   cat >"$SITE" <<NGINX
@@ -217,6 +219,7 @@ server {
         proxy_pass http://127.0.0.1:$PORT;
         proxy_http_version 1.1;
         proxy_set_header Host \$host;
+        proxy_set_header X-Forwarded-Host \$host;
         proxy_set_header X-Real-IP \$remote_addr;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto \$scheme;
