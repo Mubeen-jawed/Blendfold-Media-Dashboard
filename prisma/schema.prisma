@@ -1,0 +1,82 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  AGENCY_OWNER
+  CLIENT
+}
+
+model User {
+  id           String      @id @default(cuid())
+  email        String      @unique
+  name         String
+  passwordHash String
+  role         Role        @default(CLIENT)
+  isActive     Boolean     @default(true)
+  agencyId     String?
+  agency       Agency?     @relation(fields: [agencyId], references: [id], onDelete: SetNull)
+  clientId     String?
+  client       Client?     @relation(fields: [clientId], references: [id], onDelete: SetNull)
+  savedViews   SavedView[]
+  lastLoginAt  DateTime?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@index([agencyId])
+  @@index([clientId])
+}
+
+/// An agency groups several clients. Agency owners see every client in their agency.
+model Agency {
+  id        String   @id @default(cuid())
+  name      String
+  clients   Client[]
+  users     User[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Client {
+  id         String      @id @default(cuid())
+  name       String
+  agencyId   String?
+  agency     Agency?     @relation(fields: [agencyId], references: [id], onDelete: SetNull)
+  adAccounts AdAccount[]
+  users      User[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@index([agencyId])
+}
+
+model AdAccount {
+  id        String   @id @default(cuid())
+  /// Meta ad account id in "act_<number>" form
+  metaId    String   @unique
+  name      String
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientId])
+}
+
+model SavedView {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  href      String
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}

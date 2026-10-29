@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-canvas: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-sunken: #f8f9fb;
+  --color-line: #e4e7ec;
+  --color-line-strong: #d0d5dd;
+
+  --color-ink: #1d2939;
+  --color-ink-2: #344054;
+  --color-muted: #667085;
+  --color-subtle: #98a2b3;
+
+  --color-brand: #3e5c84;
+  --color-brand-hover: #344f73;
+  --color-brand-soft: #e5ecf4;
+  --color-brand-ink: #34557f;
+
+  --color-good: #4f7d63;
+  --color-good-soft: #e9f2ec;
+  --color-bad: #b4524b;
+  --color-bad-soft: #fbeceb;
+  --color-warn: #b07a2f;
+  --color-warn-soft: #fbf1e1;
+
+  --color-chart-1: #45648d;
+  --color-chart-2: #6f9a80;
+  --color-chart-3: #c3cbd6;
+  --color-chart-4: #9db6a6;
+  --color-chart-5: #b8c7da;
+  --color-chart-6: #dde3ea;
+  --color-chart-bar: #c8d6e5;
+}
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-feature-settings: "cv11", "ss01";
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thin, unobtrusive scrollbars for horizontally-scrolling tables */
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-line bg-surface;
+  }
+  .btn {
+    @apply inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-line bg-surface px-3.5 text-sm font-medium whitespace-nowrap text-ink-2 transition-colors hover:bg-sunken disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-brand px-4 text-sm font-medium whitespace-nowrap text-white transition-colors hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-sm {
+    @apply h-8 rounded-lg px-2.5 text-[13px];
+  }
+  .btn-danger {
+    @apply inline-flex h-8 items-center justify-center gap-1.5 rounded-lg border border-bad/30 bg-bad-soft px-2.5 text-[13px] font-medium text-bad hover:bg-bad/15;
+  }
+  .input {
+    @apply h-10 w-full rounded-xl border border-line bg-surface px-3 text-sm text-ink outline-none placeholder:text-subtle focus:border-brand focus:ring-2 focus:ring-brand/15;
+  }
+  .label {
+    @apply mb-1.5 block text-[13px] font-medium text-ink-2;
+  }
+  .th {
+    @apply h-11 px-3 text-left text-[11px] font-medium tracking-wide whitespace-nowrap text-muted uppercase first:pl-5 last:pr-5 sm:first:pl-6 sm:last:pr-6;
+  }
+  .td {
+    @apply px-3 py-3.5 text-sm whitespace-nowrap text-ink first:pl-5 last:pr-5 sm:first:pl-6 sm:last:pr-6;
+  }
+  .eyebrow {
+    @apply text-[11px] font-medium tracking-wide text-muted uppercase;
+  }
+  .link {
+    @apply font-medium text-brand-ink hover:underline;
+  }
+}
